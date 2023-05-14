@@ -1,0 +1,28 @@
+﻿@page
+@model ClaimsModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>The users Claims (Iteration on User.Claims)</h2>
+        <p>
+            @foreach (var claim in User.Claims)
+            {
+                <strong>@claim.Type</strong> <br /> <span style="padding-left: 10px">Value: @claim.Value</span> <br />
+                
+            }
+
+            groupIds<br />
+            @foreach (var claim in User.Claims)
+            {
+                @if (claim.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/groups")
+                {
+                @claim.Value<br />
+                }
+            }
+        </p>
+    </div>
+</div>
+
